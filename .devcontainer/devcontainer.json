@@ -11,7 +11,8 @@
         "editorconfig.editorconfig",
         "streetsidesoftware.code-spell-checker",
         "ms-azuretools.vscode-docker",
-        "golang.Go"
+        "golang.Go",
+        "github.vscode-github-actions"
       ]
     }
   },
