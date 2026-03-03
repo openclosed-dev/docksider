@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@@v6
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.26'
+      - name: Build
+        run: go build -trimpath ./cmd/docksider
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: docksider.exe
+          path: ./docksider.exe
