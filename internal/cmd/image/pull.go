@@ -46,6 +46,7 @@ func NewPullCmd() *cobra.Command {
 			puller := puller{cmd.Context(), opts}
 			return puller.execute(args[0])
 		},
+		DisableFlagsInUseLine: true,
 	}
 
 	flags := cmd.Flags()

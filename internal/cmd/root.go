@@ -21,6 +21,7 @@ func NewRootCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return cmd.Usage()
 		},
+		DisableFlagsInUseLine: true,
 	}
 
 	root.CompletionOptions.DisableDefaultCmd = true

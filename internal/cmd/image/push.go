@@ -44,6 +44,7 @@ func NewPushCmd() *cobra.Command {
 			pusher := pusher{cmd.Context(), opts}
 			return pusher.execute(args[0])
 		},
+		DisableFlagsInUseLine: true,
 	}
 
 	flags := cmd.Flags()

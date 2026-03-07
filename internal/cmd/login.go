@@ -37,6 +37,7 @@ func NewLoginCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return login(args[0], opts)
 		},
+		DisableFlagsInUseLine: true,
 	}
 
 	flags := cmd.Flags()
