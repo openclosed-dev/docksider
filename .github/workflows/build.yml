@@ -25,3 +25,4 @@ jobs:
         with:
           name: docksider.exe
           path: ./docksider.exe
+          retention-days: 1
