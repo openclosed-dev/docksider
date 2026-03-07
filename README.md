@@ -1,5 +1,8 @@
 # Docksider
 
+[![Build](https://github.com/openclosed-dev/docksider/actions/workflows/build.yml/badge.svg)](https://github.com/openclosed-dev/docksider/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/release/openclosed-dev/docksider/all.svg)](https://github.com/openclosed-dev/docksider/releases)
+
 A Docker-style CLI for pulling and pushing images directly to container registries, not via Docker daemon.
 
 ## Configuration
