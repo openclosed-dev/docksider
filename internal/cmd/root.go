@@ -29,6 +29,7 @@ func NewRootCmd() *cobra.Command {
 		NewLoginCmd(),
 		NewPsCmd(),
 		image.NewCmd(),
+		image.NewImagesCmd(),
 		image.NewPullCmd(),
 		image.NewPushCmd(),
 	)
