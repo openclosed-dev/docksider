@@ -6,13 +6,13 @@ import (
 	"io"
 	"os"
 
-	"github.com/docker/cli/cli/streams"
 	"github.com/google/go-containerregistry/pkg/crane"
 	"github.com/google/go-containerregistry/pkg/logs"
 	"github.com/google/go-containerregistry/pkg/name"
 	"github.com/google/go-containerregistry/pkg/v1/remote"
 	"github.com/moby/moby/client"
-	"github.com/moby/moby/pkg/jsonmessage"
+	"github.com/moby/moby/client/pkg/jsonmessage"
+	"github.com/moby/term"
 	"github.com/openclosed-dev/docksider/internal/docker"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 	"github.com/spf13/cobra"
@@ -137,13 +137,18 @@ func (p *puller) loadImage(imageName string, reader io.ReadCloser, platformList 
 	if err != nil {
 		return err
 	}
-	defer res.Body.Close()
+	defer res.Close()
 
-	var writer io.Writer = os.Stderr
+	return p.outputResult(res)
+}
+
+func (p *puller) outputResult(result client.ImageLoadResult) error {
+
+	var out io.Writer = os.Stderr
 	if p.opts.quiet {
-		writer = io.Discard
+		out = io.Discard
 	}
 
-	stream := streams.NewOut(writer)
-	return jsonmessage.DisplayJSONMessagesToStream(res.Body, stream, nil)
+	fd, isTerminal := term.GetFdInfo(out)
+	return jsonmessage.DisplayJSONMessagesStream(result, out, fd, isTerminal, nil)
 }
