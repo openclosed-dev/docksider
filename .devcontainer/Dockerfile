@@ -15,9 +15,14 @@ RUN apt-get update \
   && export DEBIAN_FRONTEND=noninteractive \
   && apt-get install -y --no-install-recommends git openssh-client
 
+# Install Azure CLI
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+
 RUN mkdir /workspaces && chown ${USERNAME}:${USERNAME} /workspaces
 
 USER ${USERNAME}
+
+RUN mkdir ~/.azure
 
 RUN go install github.com/go-delve/delve/cmd/dlv@latest \
   && go install golang.org/x/tools/gopls@latest

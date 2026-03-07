@@ -8,6 +8,8 @@ services:
         - USER_GID=${COMPOSE_GROUP_ID:-1000}
         - DOCKER_GID=${DOCKER_GROUP_ID:?err}
     command: sleep infinity
+    environment:
+      - DOCKER_COMMAND=/workspaces/docksider/docksider
     volumes:
       - type: bind
         source: ../
@@ -17,3 +19,8 @@ services:
       - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
+      - type: volume
+        source: azure
+        target: /home/${USER}/.azure
+volumes:
+  azure: {}
