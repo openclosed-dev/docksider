@@ -57,6 +57,12 @@ Docker デーモンの URL。形式は`tcp://<address>:<port>`。
 
 [Configure remote access for Docker daemon](https://docs.docker.com/engine/daemon/remote-access/)を参照してください。
 
+デーモンがWSLディストリビューション上で実行されている場合は、このリポジトリに含まれる次のスクリプトをWSLディストリビューション上で実行してみてください。
+
+```shell
+sudo bash configure-docker-daemon.sh
+```
+
 ### `DOCKER_COMMAND`
 
 この実行可能ファイルへのフルパス。ファイル名を含みます。

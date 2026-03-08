@@ -58,6 +58,12 @@ Note that the Docker daemon must be up and running on the specified address and 
 
 See [Configure remote access for Docker daemon](https://docs.docker.com/engine/daemon/remote-access/)
 
+If your daemon is running on a WSL distro, try running the following script from this repository on your WSL distro:
+
+```shell
+sudo bash configure-docker-daemon.sh
+```
+
 ### `DOCKER_COMMAND`
 
 The full path to this executable, including the filename.
