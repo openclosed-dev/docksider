@@ -23,6 +23,10 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v6
         with:
-          name: docksider.exe
-          path: ./docksider.exe
+          name: docksider-windows-amd64
+          path: |
+            docksider.exe
+            LICENSE
+            README.md
+            README_ja.md
           retention-days: 1
