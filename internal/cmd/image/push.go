@@ -112,7 +112,7 @@ func (p *pusher) saveImage(imageName string, writer io.WriteCloser, platformList
 
 	reader, err := c.ImageSave(p.ctx, images, saveOpts...)
 	if err != nil {
-		return err
+		return docker.WrapError(err)
 	}
 	defer reader.Close()
 

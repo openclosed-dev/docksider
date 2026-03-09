@@ -136,7 +136,7 @@ func (p *puller) loadImage(imageName string, reader io.ReadCloser, platformList 
 
 	res, err := c.ImageLoad(p.ctx, reader, options...)
 	if err != nil {
-		return err
+		return docker.WrapError(err)
 	}
 	defer res.Close()
 

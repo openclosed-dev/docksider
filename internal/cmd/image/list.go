@@ -97,7 +97,7 @@ func (l *lister) execute(args []string) error {
 
 	res, err := c.ImageList(l.ctx, listOpts)
 	if err != nil {
-		return err
+		return docker.WrapError(err)
 	}
 
 	return l.outputResult(res.Items)
