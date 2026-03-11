@@ -32,9 +32,11 @@ if [ -f "$config_file" ]; then
   sudo cp $config_file "$config_file.$now"
 fi
 
+docker_host="tcp://$listen_address:$listen_port"
+
 sudo cat <<EOF > $config_file
 {
-  "hosts": ["unix:///var/run/docker.sock", "tcp://$listen_address:$listen_port"]
+  "hosts": ["unix:///var/run/docker.sock", "${docker_host}"]
 }
 EOF
 
@@ -43,3 +45,4 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker.service
 
 echo 'Done.'
+echo "On the client side, set environment variable DOCKER_HOST to \"${docker_host}\"."
