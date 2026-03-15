@@ -68,6 +68,12 @@ sudo bash configure-docker-daemon.sh
 この実行可能ファイルへのフルパス。ファイル名を含みます。
 この変数は、Azure CLIがこのプログラムを正しく検出するために必要です。
 
+設定が完了したら、`diagnose` サブコマンドを使用して正しさを確認できます。
+
+```shell
+docksider diagnose
+```
+
 ## Azure Container Registryと使う
 
 1. Azure CLIを使用して Azureコンテナレジストリにログインします。

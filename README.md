@@ -69,6 +69,12 @@ sudo bash configure-docker-daemon.sh
 The full path to this executable, including the filename.
 This variable is required for Azure CLI to properly find this program.
 
+Once the setup is complete, you can use the `diagnose` subcommand to verify its correctness.
+
+```shell
+docksider diagnose
+```
+
 ## Using with Azure Container Registry
 
 1. Log in to your Azure container registry using Azure CLI.
