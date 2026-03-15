@@ -56,15 +56,14 @@ func (d *diagnoser) checkCommandEnv() {
 	}
 
 	exePath, err := os.Executable()
-	if err != nil && value != exePath {
+	if err == nil && value != exePath {
 		d.reportBad(`Environment variable DOCKER_COMMAND has a wrong value.
-The actual value is '%s', but the full path of the current executable is '%s'
-`,
+The actual value is '%s', but the full path of the current executable is '%s'`,
 			value, exePath)
 		return
 	}
 
-	d.reportGood("Environment variable DOCKER_COMMAND has a valid value.")
+	d.reportGood("Environment variable DOCKER_COMMAND has a valid value: '%s'", value)
 }
 
 func (d *diagnoser) checkHostEnv() (string, bool) {
@@ -87,7 +86,7 @@ A valid example is '%s' if the daemon is listening on the IP address and the por
 		return host, false
 	}
 
-	d.reportGood("Environment variable DOCKER_HOST has a valid value.")
+	d.reportGood("Environment variable DOCKER_HOST has a valid value: '%s'", host)
 	return host, true
 }
 
