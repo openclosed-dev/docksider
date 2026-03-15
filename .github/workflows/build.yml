@@ -20,11 +20,16 @@ jobs:
           go-version: '1.26'
       - name: Build
         run: go build -trimpath ./cmd/docksider
+      - name: Test
+        run: go test ./...
+      - name: Launch
+        run: ./docksider --help
       - name: Upload Artifact
         uses: actions/upload-artifact@v6
         with:
           name: docksider-windows-amd64
           path: |
+            configure-docker-daemon.sh
             docksider.exe
             LICENSE
             README.md
