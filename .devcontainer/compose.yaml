@@ -10,6 +10,7 @@ services:
     command: sleep infinity
     environment:
       - DOCKER_COMMAND=/workspaces/docksider/docksider
+      - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
       - type: bind
         source: ../

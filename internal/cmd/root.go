@@ -32,6 +32,7 @@ func NewRootCmd(version string) *cobra.Command {
 	root.CompletionOptions.DisableDefaultCmd = true
 
 	root.AddCommand(
+		NewDiagnoseCmd(),
 		NewLoginCmd(),
 		NewPsCmd(),
 		image.NewCmd(),
